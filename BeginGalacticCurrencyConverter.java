@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class BeginGalacticCurrencyConverter {
 
 
@@ -5,8 +7,32 @@ public class BeginGalacticCurrencyConverter {
 
         final String sentenceInputFileName = "input.txt";
 
-        SentenceProcessor sentenceProcessor = new SentenceProcessor();
+        NotesProcessor notesProcessor = new NotesProcessor();
 
-        sentenceProcessor.getSetanceFromNotes(sentenceInputFileName);
+        List<String> notes =  notesProcessor.getSentencesFromNotes(sentenceInputFileName);
+        BeginGalacticCurrencyConverter  converter = new BeginGalacticCurrencyConverter();
+
+        notes.forEach(line -> {
+            if (line.startsWith("how many") || line.startsWith("how much")){
+                converter.hanndleQuery(line);
+            } else if (line.contains("is") && line.endsWith("Credits")){
+                converter.hanndlePrices(line);
+            }else {
+                converter.hanndleConverseion(line);
+            }
+        });
+
+    }
+
+    public void hanndleConverseion(String line){
+//        if (line.startsWith(""))
+    }
+
+    public void hanndleQuery(String line){
+//        if (line.startsWith(""))
+    }
+
+    public void hanndlePrices(String line){
+//        if (line.startsWith(""))
     }
 }

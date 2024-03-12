@@ -4,24 +4,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SentenceProcessor {
+public class NotesProcessor {
 
-    public List<String> getSetanceFromNotes(String notes){
-        List<String> setences = new ArrayList<>();
+    public List<String> getSentencesFromNotes(String notes){
+        List<String> sentences = new ArrayList<>();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(notes));
             String line;
             while((line = br.readLine()) != null){
-                setences.add(line);
+                sentences.add(line);
             }
         } catch (IOException e){
             e.printStackTrace();
         }
-        setences.forEach(s -> {
-            System.out.println(s);
-        });
-        return setences;
+        return sentences;
 
     }
 }
